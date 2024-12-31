@@ -13,3 +13,6 @@ jobs:
       - name: Install Dependency
         run: npm ci
         working-directory: "04-using-actions/my-posta"
+      - name: Build
+        run: npm run build
+        working-directory: "04-using-actions/my-posta"
