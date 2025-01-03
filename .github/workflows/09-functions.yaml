@@ -9,7 +9,10 @@ jobs:
       - name: Print PR title
         run: echo "PR title is- ${{github.event.pull_request.title}}"
       - name: Print PR labels
-        run: echo "PR labels are- ${{toJSON(github.event.pull_request.labels)}}"
+        run: |
+          cat << EOF
+          ${{ toJSON(github.event.pull_request.labels) }}
+          EOF
       - name: Sleep for 20 seconds
         run: Sleep 20
       - name: Failing step
