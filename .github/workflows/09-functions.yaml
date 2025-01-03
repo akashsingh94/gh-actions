@@ -1,0 +1,10 @@
+name: 09 - Using Functions
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  echo1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Failing step
+        run: exit 1

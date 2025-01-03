@@ -1,6 +1,5 @@
 name: 08 - Using Variables
 on:
-  push:
   workflow_dispatch:
 env:
   WORKFLOW_VAR: "WORKFLOW VAR"
@@ -14,8 +13,8 @@ jobs:
     steps:
       - name: Print Env Variables
         env:
-          STEP_VAR: "STEP_VAR"
-          STEP_VAR2: "step_var2"
+          STEP_VAR: "STEP VAR"
+          STEP_VAR2: "step var 2"
         run: |
           echo "Step env var: ${{env.STEP_VAR}}"
           echo "Step env var 2: ${{env.STEP_VAR2}}"
