@@ -1,0 +1,23 @@
+name: 13 - Using Caching
+on:
+  workflow_dispatch:
+    inputs:
+      use-cache:
+        type: boolean
+        default: true
+        description: "Whether to execute cache step"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: /04-using-action/my-posta
+    steps:
+      - name: Checkout code
+        uses: actions/Checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+      - name: Install dependencies
+        run: npm cli
