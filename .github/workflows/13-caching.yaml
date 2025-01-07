@@ -20,4 +20,10 @@ jobs:
         with:
           node-version: "20.x"
       - name: Install dependencies
-        run: npm cli
+        run: npm ci
+      - name: linting
+        run: npm run lint
+      - name: Building
+        run: npm run build
+      - name: Deploying to nonprod
+        run: echo "Deploying to nonprod"
