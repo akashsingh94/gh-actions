@@ -41,7 +41,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: app
-          path: 04-using-actions/my-posta/.next/
+          path: 04-using-actions/my-posta/.next
 
   deploy:
     runs-on: ubuntu-latest
