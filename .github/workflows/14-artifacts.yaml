@@ -32,7 +32,9 @@ jobs:
         run: npm run lint
 
       - name: Build code
-        run: npm run build
+        run: |
+          NODE_ENV=production npm run build
+          ls -la .next  # Check if .next folder exists
 
       - name: List directory
         run: ls
