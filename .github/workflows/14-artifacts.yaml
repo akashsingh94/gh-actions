@@ -34,16 +34,15 @@ jobs:
       - name: Build code
         run: |
           NODE_ENV=production npm run build
-          ls -la .next  # Check if .next folder exists
 
-      - name: List directory
-        run: ls
+      - name: Check if .next folder exists
+        run: ls -la .next
 
       - name: Upload build files
         uses: actions/upload-artifact@v4
         with:
           name: app
-          path: .next
+          path: 04-using-actions/my-posta/.next
 
   deploy:
     runs-on: ubuntu-latest
