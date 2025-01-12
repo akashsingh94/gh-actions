@@ -30,3 +30,4 @@ runs:
       if: ${{steps.cache.outputs.cache-hit != 'true'}}
       run: npm ci
       shell: bash
+      working-directory: ${{ inputs.working-dir }}
