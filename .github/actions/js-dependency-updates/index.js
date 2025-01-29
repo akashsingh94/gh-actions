@@ -22,7 +22,7 @@ const exec = require("@actions/exec");
 
     //check if the package.json file got changes
     const gitStatus = await exec.getExecOutput(
-      "npm status -s package*.json",
+      "git status -s package*.json",
       [],
       {
         cwd: workingDir,
