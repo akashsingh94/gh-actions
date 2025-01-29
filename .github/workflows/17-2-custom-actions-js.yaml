@@ -1,8 +1,18 @@
 name: 17 - 2 - custom-actions - js
-run-name: 17 - 2 - custom - actions - js
+run-name: 17 - 2 - custom - actions - js | BB - ${{inputs.base-branch}} TB - ${{inputs.target-branch}} WD - ${{inputs.working-directory}}
 
 on:
   workflow_dispatch:
+    inputs:
+      base-branch:
+        type: string
+        default: main
+      target-branch:
+        type: string
+        default: update-dependencies
+      working-directory:
+        type: string
+        default: 04-using-actions/my-posta
 
 jobs:
   Dependencies-update:
@@ -12,3 +22,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Check for Dependencies update
         uses: ./.github/actions/js-dependency-updates
+        with:
+          base-branch: ${{inputs.base-branch}}
+          target-branch: ${{inputs.target-branch}}
+          working-directory: ${{inputs.working-directory}}
