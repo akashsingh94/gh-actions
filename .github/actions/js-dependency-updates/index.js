@@ -31,20 +31,20 @@ const github = require("@actions/github");
     );
 
     if (gitStatus.stdout.length > 0) {
+      core.info(`[js-dependency-update]: There are updates available`);
+      await exec.exec('git config --global user.name "gh-automation"');
+      await exec.exec(
+        'git config --global user.email "gh-automation@email.com"'
+      );
+      await exec.exec(`git checkout -b ${targetBranch}`, [], {
+        cwd: workingDir,
+      });
+      await exec.exec("git add package.json package-lock.json");
+      await exec.exec(
+        'git commit -m "automation: updating the dependency package"'
+      );
+      await exec.exec(`git push -u origin ${targetBranch} --force`);
       try {
-        core.info(`[js-dependency-update]: There are updates available`);
-        await exec.exec('git config --global user.name "gh-automation"');
-        await exec.exec(
-          'git config --global user.email "gh-automation@email.com"'
-        );
-        await exec.exec(`git checkout -b ${targetBranch}`, [], {
-          cwd: workingDir,
-        });
-        await exec.exec("git add package.json package-lock.json");
-        await exec.exec(
-          'git commit -m "automation: updating the dependency package"'
-        );
-        await exec.exec(`git push -u origin ${targetBranch} --force`);
         const octokit = github.getOctokit(ghToken);
         await octokit.rest.pulls.create({
           owner: github.context.repo.owner,
