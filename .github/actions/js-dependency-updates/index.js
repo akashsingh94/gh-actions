@@ -39,7 +39,9 @@ const github = require("@actions/github");
       await exec.exec(`git checkout -b ${targetBranch}`, [], {
         cwd: workingDir,
       });
-      await exec.exec("git add package.json package-lock.json");
+      await exec.exec("git add package.json package-lock.json", [], {
+        cwd: workingDir,
+      });
       await exec.exec(
         'git commit -m "automation: updating the dependency package"'
       );
